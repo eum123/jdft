@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!-- 전문 변환 설정 -->
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<fc>
+  <placeholder>
+  	<location>/src/test/resources/conf/converter.properties</location>
+  </placeholder>
+  
+  <pool>
+    <maxActive>8</maxActive>
+    <maxIdle>2</maxIdle>
+    <maxWait>5000</maxWait>
+    <exhaustedAction>grow</exhaustedAction>
+  </pool>
+  
+  <reload>
+    <autoReload>true</autoReload>
+  </reload>
+
+  <transform>
+    <import resource="${CONVERTER.HOME}/T_1XXX.xml" />
+    <import resource="${CONVERTER.HOME}/T_200X.xml" />
+  </transform>
+</fc>

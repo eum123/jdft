@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fc>
+	<pool>
+		<maxActive>8</maxActive>
+		<maxIdle>-1</maxIdle>
+		<maxWait>5000</maxWait>
+	</pool>
+
+	<reload>
+		<autoReload>true</autoReload>
+	</reload>
+
+	<transform>
+		<conversion id="test_1">
+			<from format="fixedlength">
+				<data  id="a">
+					<header>
+						<field id="name" size="10" charset="euc-kr"/>
+					</header>
+					<body>
+						<field id="age" size="5"/>
+					</body>
+				</data>
+			</from>
+
+			<to format="fixedlength">
+				<data >
+					<header>
+						<field id="name" size="10"  charset="euc-kr"/>
+					</header>
+					<body format="fixedlength">
+						<field id="age" size="5" padding=" "/>
+					</body>
+				</data>
+			</to>
+		</conversion>
+		
+		<conversion id="test_2">
+			<from format="fixedlength">
+				<data  >
+					<header>
+						<field id="name" size="10" charset="euc-kr"/>
+					</header>
+					<body>
+						<field id="age" size="5"/>
+					</body>
+				</data>
+			</from>
+
+			<to format="fixedlength">
+				<data >
+					<header>
+						<field id="name" size="10" value="$name" charset="euc-kr"/>
+					</header>
+					<body format="fixedlength">
+						<field id="age" size="5" value="$age" padding=" "/>
+					</body>
+				</data>
+			</to>
+		</conversion>
+		<conversion id="test_length">
+			<from format="fixedlength" >
+				<data >
+					<header>
+						<field id="name" size="2" charset="euc-kr"/>
+					</header>
+					<body>
+						<field id="age" size="$name"/>
+					</body>
+				</data>
+			</from>
+
+			<to format="fixedlength">
+				<data >
+					<header>
+						<field id="name" size="2"  charset="euc-kr"/>
+					</header>
+					<body format="fixedlength">
+						<field id="age" size="$name"  padding=" "/>
+					</body>
+				</data>
+			</to>
+		</conversion>
+		
+		<conversion id="test_loop">
+			<from format="fixedlength">
+				<data  >
+					<header>
+						<field id="name" size="2" />
+					</header>
+					<body>
+						<loop size="$name">
+							<field id="age" size="2"/>
+						</loop>
+					</body>
+				</data>
+			</from>
+
+			<to format="fixedlength">
+				<data  >
+					<header>
+						<field id="name" size="2" />
+					</header>
+					<body>
+						<loop size="$name">
+							<field id="age" size="2"/>
+						</loop>
+					</body>
+				</data>
+			</to>
+		</conversion>
+		
+		<conversion id="test_xml">
+			<from format="fixedlength">
+				<data  >
+					<header>
+						<field id="name" size="2" />
+						<field id="length" size="3" />
+					</header>
+					<body size="$length" format="xml">
+						<loop id="myLoop" size="$name" xpath="/home/loop">
+							<field id="age" xpath="/home/loop/age" size="2"/>
+						</loop>
+					</body>
+				</data>
+			</from>
+
+			<to format="fixedlength">
+				<data  >
+					<header>
+						<field id="name" size="2" />
+						<field id="length" size="3" />
+					</header>
+					<body>
+						<loop id="myLoop" size="$myLoop.size()">
+							<field id="age" size="2"/>
+						</loop>
+					</body>
+				</data>
+			</to>
+		</conversion>
+		
+		<conversion id="test_name_xml">
+			<from format="fixedlength">
+				<data  >
+					<header>
+						<field id="name" size="2" />
+						<field id="length" size="3" />
+					</header>
+					<body size="$length" format="xml">
+						<create xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/" />
+						<loop id="myLoop" size="$name" xpath="/SOAP:home/loop">
+							<field id="age" xpath="/SOAP:home/loop/age" size="2"/>
+						</loop>
+					</body>
+				</data>
+			</from>
+
+			<to format="fixedlength">
+				<data  >
+					<header>
+						<field id="name" size="2" />
+						<field id="length" size="3" />
+					</header>
+					<body>
+						<loop id="myLoop" size="$myLoop.size()">
+							<field id="age" size="2"/>
+						</loop>
+					</body>
+				</data>
+			</to>
+		</conversion>
+		
+		<conversion id="test_fixed2namexml">
+			<from format="fixedlength">
+				<data  >
+					<header>
+						<field id="name" size="2" />
+						<field id="length" size="3" />
+					</header>
+					<body>
+						<loop id="myLoop" size="3">
+							<field id="age" size="2"/>
+						</loop>
+					</body>
+				</data>
+			</from>
+			<to format="fixedlength">
+				<data  >
+					<header>
+						<field id="name" size="2" />
+						<field id="length" size="3" value="$body.size()" />
+					</header>
+					<body id="body" format="xml">
+						<create xpath="/SOAP:home" xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/" />
+						<field id="dummy" xpath="/SOAP:home/dummy" size="2" value="00" />
+ 						<loop id="myLoop" size="$name" xpath="/SOAP:home/loop">
+							<field id="age" xpath="/SOAP:home/loop/age" size="2"/>
+						</loop>
+					</body>
+				</data>
+			</to>			
+		</conversion>
+		
+		<conversion id="test_loopxml">
+			<from format="fixedlength">
+				<data  >
+					<header>
+						<field id="name" size="2" />
+						<field id="length" size="2" />
+					</header>
+					<body size="$length" format="xml">
+						<loop id="myLoop" size="$name" xpath="/home/loop">
+						</loop>
+					</body>
+				</data>
+			</from>
+
+			<to format="fixedlength">
+				<data  >
+					<header>
+						<field id="name" size="2" />
+						<field id="length" size="2" />
+					</header>
+					<body>
+						<loop id="myLoop" size="$myLoop.size()">
+							<field id="age" size="2"/>
+						</loop>
+					</body>
+				</data>
+			</to>
+		</conversion>
+
+		<description></description>
+	</transform>
+
+</fc>

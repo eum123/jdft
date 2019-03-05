@@ -1,0 +1,21 @@
+*/logs/*
+*/logs/*.log
+*.log
+*.jar
+target/*
+target/classes/*
+*.iml
+*.txt
+
+# OS
+*DS_Store*
+
+# IDE
+.buildpath
+.project
+.idea
+.settings/
+/target/
+.classpath
+.tern-project
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<conversion id="200" >
+  <from format="fixedlength">
+    <data>
+      <header>
+        <import id="temp" resource="src/test/resources/conf/add.xml" />
+        <field id="HDR_CORP_ID"    		size="8"	description="기관코드"/>
+      </header>
+      <body format="fixedlength">
+	     <field id="BDY_ACCOUNT"    		size="16"	description="계좌번호"/>
+	     <field id="BDY_ACCOUNT_NAME"    	size="20"	description="예금주명"/>
+      </body>
+    </data>
+  </from>
+
+  <to format="fixedlength">
+    <data>
+      <header>
+      	<import id="temp" resource="src/test/resources/conf/add.xml" />
+        <field id="HDR_CORP_ID"    		size="8"	description="기관코드"/>
+      </header>
+      <body format="fixedlength">
+      	 <field id="BDY_ACCOUNT"    		size="16"	description="계좌번호"/>
+	    <field id="BDY_ACCOUNT_NAME"    	size="20"	description="예금주명"/>
+      </body>
+    </data>
+  </to>
+  <description>입금 업무 (1XXX, 3XXX), 입금 취소 업무 (1x1x, 3x1x)</description>
+</conversion>  
+
+

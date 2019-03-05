@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+
+<fc>
+	<pool>
+		<maxActive>8</maxActive>
+		<maxIdle>2</maxIdle>
+		<maxWait>5000</maxWait>
+	</pool>
+
+	<reload>
+		<autoReload>true</autoReload>
+	</reload>
+
+	<transform>
+
+<conversion id="SAMPLE_001">
+	<description>SAMPLES</description>
+	
+	<from format="fixedlength" >
+		<data>
+			<header>
+				<field id="TRX_CODE"	  	datatype="java.lang.String"	size="6"   description="전문 상위 분류" />
+				<field id="SERVICE_CODE"  	datatype="java.lang.String"	size="4"   description="전문 번호" />
+				<field id="ORG_CODE"		datatype="java.lang.String"	size="4"   description="기관코드" />
+				<field id="TRANS_DATE"		datatype="java.lang.String"	size="8"   description="전송일자" />
+				<field id="TRANS_TIME"		datatype="java.lang.String"	size="6"   description="전송시간" />
+				<field id="TRACE_NUMBER"	datatype="java.lang.String"	size="10"  description="추적번호" />
+				<field id="RESULT_CODE_1"	datatype="java.lang.String"	size="3"   description="응답코드 대분류" />
+				<field id="RESULT_CODE_2"	datatype="java.lang.String"	size="3"   description="응답코드 소분류" />
+				<field id="BODY_LENGTH"		datatype="java.lang.String"	size="4"   description="전문 길이" />
+				<field id="HEADER_FILER"	datatype="java.lang.String"	size="12"  description="Filler" />
+			</header>
+			<body id="BODY" format="fixedlength">
+				<field id="CPCO_ID"	            datatype="java.lang.String"	size="6"  	  description="제휴사 코드" />
+				<field id="FRANCHISE_ID"		datatype="java.lang.String"	size="10"     description="가맹점 코드" />
+				<field id="FRANCHISE_NAME"		datatype="java.lang.String"	size="80"     description="가맹점 명" />
+				<field id="POS_ID"	            datatype="java.lang.String"	size="16"     description="POS코드" />
+			</body>
+		</data>
+	</from>
+
+
+	<to format="fixedlength" >
+		<data>
+			<header>
+				<field id="TRX_CODE"	  	datatype="java.lang.String"	size="6"   description="전문 상위 분류" />
+				<field id="SERVICE_CODE"  	datatype="java.lang.String"	size="4"   description="전문 번호" />
+				<field id="ORG_CODE"		datatype="java.lang.String"	size="4"   description="기관코드" />
+				<field id="TRANS_DATE"		datatype="java.lang.String"	size="8"   description="전송일자" />
+				<field id="TRANS_TIME"		datatype="java.lang.String"	size="6"   description="전송시간" />
+				<field id="TRACE_NUMBER"	datatype="java.lang.String"	size="10"  description="추적번호" />
+				<field id="CUR_TIME_MILLIS"	datatype="java.lang.String"	size="13"  value="System.currentTimeMillis()"  description="millis" />
+				<field id="RESULT_CODE_1"	datatype="java.lang.String"	size="3"   description="응답코드 대분류" />
+				<field id="RESULT_CODE_2"	datatype="java.lang.String"	size="3"   description="응답코드 소분류" />
+				<field id="BODY_LENGTH"		datatype="java.lang.String"	size="4"   value="String.format('%04d', $BODY.size())"   description="전문 길이" />
+				<field id="HEADER_FILER"	datatype="java.lang.String"	size="12"  description="Filler" />
+			</header>
+			<body id="BODY" format="fixedlength">
+				<field id="CPCO_ID"	            datatype="java.lang.String"	size="6"  	  description="제휴사 코드" />
+				<field id="FRANCHISE_ID"		datatype="java.lang.String"	size="10"     description="가맹점 코드" />
+				<field id="FRANCHISE_NAME"		datatype="java.lang.String"	size="80"     description="가맹점 명" />
+				<field id="POS_ID"	            datatype="java.lang.String"	size="16"     description="POS코드" />
+			</body>
+		</data>
+	</to>
+</conversion>
+
+	</transform>
+
+</fc>

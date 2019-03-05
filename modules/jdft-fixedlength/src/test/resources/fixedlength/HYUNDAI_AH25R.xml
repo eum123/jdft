@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<fc>
+	<pool>
+		<maxActive>8</maxActive>
+		<maxIdle>-1</maxIdle>
+		<maxWait>5000</maxWait>
+	</pool>
+
+	<reload>
+		<autoReload>true</autoReload>
+	</reload>
+	<transform>
+<conversion id="AH25R" >
+  <from format="fixedlength">
+    <data>
+      <header>
+			  <field id="TR_CD"		size="4"  description="TR CODE"/>
+        <field id="DOC_CD"		size="5"	description="전문코드"/>
+        <field id="SEQ_NUM"		size="8"	description="전문번호"/>
+        <field id="SND_DATE" 		size="16"	description="전문송신일시"/>
+        <field id="TEST_FLAG"		size="1"	description="테스트여부"/>
+        <field id="DOC_TYPE"		size="1"	description="전문유형" />
+        <field id="filler"		size="19"	description="예비" />
+        <field id="DOC_LENGTH"		size="6"	description="전문길이" />  
+        <field id="RET_CD" 		size="4"	description="응답코드" /> 
+      </header> 
+      <body format="fixedlength">
+      	<field id="REC_DATE"	size="8"		description="접수일자"/>
+				<field id="CUST_NAME"    	size="70"		description="고객성명" />
+				<field id="HP_NUM1"	size="4"		description="연락처1"/>
+				<field id="HP_NUM2"    	size="4"		description="연락처2"/>
+				<field id="HP_NUM3"	size="4"		description="연락처3"/>
+				<field id="ADDR1"		size="200"	description="주소1"/>
+				<field id="ADDR2" 		size="200"	description="주소2"/>
+				<field id="ALLI_CUST_NUM"	size="10"		description="제휴가 고객번호"/>
+				<field id="ALLI_SO_CD"    	size="4"		description="제휴사 법인구분코드(SO코드)"/>
+				<field id="RET_MSG" 	size="80"		description="결과메시지"/>
+				<field id="FILLER"    	size="116"	description="예비"/>
+			</body>           
+    </data>
+  </from>
+  <to format="fixedlength" >
+    <data>
+      <header>
+				<field id="HDR_TRX_ID"			size="9"		/> 
+			  <field id="HDR_SYS_ID"			size="3"		/> 
+			  <field id="HDR_DOC_LEN"			size="5"	value="String.format('%05d', $ENT_BODY.size()+160)"	/> 
+			  <field id="HDR_DAT_GBN"			size="1"		/> 
+			  <field id="HDR_INS_ID"			size="3"		/> 
+			  <field id="HDR_BAK_CLS"			size="2"		/> 
+			  <field id="HDR_BAK_ID"			size="3"		/> 
+			  <field id="HDR_DOC_CODE"		size="4"		/> 
+			  <field id="HDR_BIZ_CODE"		size="6"		/> 
+			  <field id="HDR_TRA_FLAG"		size="1"		/> 
+			  <field id="HDR_DOC_STATUS"	size="3"		/> 
+			  <field id="HDR_RET_CODE"		size="3"		/> 
+			  <field id="HDR_SND_DATE"		size="8"		/> 
+			  <field id="HDR_SND_TIME"		size="6"		/> 
+			  <field id="HDR_BAK_DOCSEQ"	size="8"		/> 
+			  <field id="HDR_INS_DOCSEQ"	size="8"		/> 
+			  <field id="HDR_TXN_DATE"		size="8"		/> 
+			  <field id="HDR_TOT_DOC"			size="2"		/> 
+			  <field id="HDR_CUR_DOC"			size="2"		/> 
+			  <field id="HDR_AGT_CODE"		size="15"		/> 
+			  <field id="HDR_BAK_EXT"			size="30"		/> 
+			  <field id="HDR_INS_EXT"			size="30"		/> 
+      </header>            
+      <body format="xml" id="ENT_BODY" indent="true">     	
+				<field id="TR_CD"			xpath="/BMT/TT/BMTInfo/TR_CD" description="TR CODE" />
+				<field id="DOC_CD"		xpath="/BMT/TT/BMTInfo/DOC_CD" description="전문코드" />
+				<field id="SEQ_NUM"		xpath="/BMT/TT/BMTInfo/SEQ_NUM" description="전문번호" />
+				<field id="SND_DATE"	xpath="/BMT/TT/BMTInfo/SND_DATE" description="전문송신일시" />
+				<field id="TEST_FLAG"	xpath="/BMT/TT/BMTInfo/TEST_FLAG" description="테스트여부"/>
+				<field id="DOC_TYPE"	xpath="/BMT/TT/BMTInfo/DOC_TYPE" description="전문유형" />
+				<field id="filler"		xpath="/BMT/TT/BMTInfo/filler" description="예비" />
+				<field id="DOC_LENGTH"	xpath="/BMT/TT/BMTInfo/DOC_LENGTH" description="전문길이" />
+				<field id="RET_CD"		xpath="/BMT/TT/BMTInfo/RET_CD" description="응답코드" />
+				<field id="REC_DATE"		xpath="/BMT/TT/BMTInfo/REC_DATE" description="접수일자" />
+				<field id="CUST_NAME"		xpath="/BMT/TT/BMTInfo/CUST_NAME" description="고객성명" />
+				<field id="HP_NUM1"		xpath="/BMT/TT/BMTInfo/SAMPLE/HP_NUM1" description="연락처1" />
+				<field id="HP_NUM2"		xpath="/BMT/TT/BMTInfo/SAMPLE/HP_NUM2" description="연락처2" />
+				<field id="HP_NUM3"		xpath="/BMT/TT/BMTInfo/SAMPLE/HP_NUM3" description="연락처3" />
+				<field id="ADDR1"		xpath="/BMT/TT/BMTInfo/ADDR1" description="주소1" />
+				<field id="ADDR2"		xpath="/BMT/TT/BMTInfo/ADDR2" description="주소2" />
+				<field id="ALLI_CUST_NUM"		xpath="/BMT/TT/BMTInfo/ALLI_CUST_NUM" description="제휴가 고객번호" />
+				<field id="ALLI_SO_CD"		xpath="/BMT/TT/BMTInfo/TO/ALLI_SO_CD" description="제휴사 법인구분코드(SO코드)" />
+				<field id="RET_MSG"		xpath="/BMT/TT/BMTInfo/TO/RET_MSG" description="결과메시지" />
+				<field id="FILLER"		xpath="/BMT/TT/BMTInfo/FILLER" description="예비" />
+	    </body>
+    </data>
+  </to>
+  <description> </description>
+</conversion>  
+
+	</transform>
+
+</fc>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+
+<fc>
+	<pool>
+		<maxActive>8</maxActive>
+		<maxIdle>2</maxIdle>
+		<maxWait>5000</maxWait>
+	</pool>
+
+	<reload>
+		<autoReload>true</autoReload>
+	</reload>
+
+	<transform>
+
+<conversion id="SAMPLE_02">
+	<description>SAMPLES</description>
+	<from format="fixedlength">
+		<data>
+			<header>
+				<field id="TRX_CODE"	  	datatype="java.lang.String"	size="6"   description="전문 상위 분류" />
+				<field id="SERVICE_CODE"  	datatype="java.lang.String"	size="4"   description="전문 번호" />
+				<field id="ORG_CODE"		datatype="java.lang.String"	size="4"   description="기관코드" />
+				<field id="TRANS_DATE"		datatype="java.lang.String"	size="8"   description="전송일자" />
+				<field id="TRANS_TIME"		datatype="java.lang.String"	size="6"   description="전송시간" />
+				<field id="TRACE_NUMBER"	datatype="java.lang.String"	size="10"  description="추적번호" />
+				<field id="RESULT_CODE_1"	datatype="java.lang.String"	size="3"   description="응답코드 대분류" />
+				<field id="RESULT_CODE_2"	datatype="java.lang.String"	size="3"   description="응답코드 소분류" />
+				<field id="BODY_LENGTH"		datatype="java.lang.String"	size="4"   description="전문 길이" />
+				<field id="HEADER_FILER"	datatype="java.lang.String"	size="12"  description="Filler" />
+			</header>
+			<body id="BODY" format="xml">
+				<field id="ID_REQUEST" 		xpath="/BMT/RES/ID_REQUEST" description="" />
+				<field id="DT_BUY"			xpath="/BMT/RES/DT_BUY" description="" />
+				<field id="NM_CONTENTS"		xpath="/BMT/RES/NM_CONTENTS" description="" />
+				<field id="NO_TEL"			xpath="/BMT/RES/NO_TEL" description="" />
+				<field id="SEND_CODE"		xpath="/BMT/RES/SEND_CODE" description="" />
+				<field id="SEND_CODENAME"	xpath="/BMT/RES/SEND_CODENAME" description="" />
+				<field id="VOUCHERNO"		xpath="/BMT/RES/VOUCHERNO" description="" />
+				<field id="VOUCHERSDATE"	xpath="/BMT/RES/VOUCHERSDATE" description="" />
+			</body>
+		</data>
+	</from>
+	<to format="fixedlength">
+		<data>
+			<header>
+				<field id="TRX_CODE"	  	datatype="java.lang.String"	size="6"   description="전문 상위 분류" />
+				<field id="SERVICE_CODE"  	datatype="java.lang.String"	size="4"   description="전문 번호" />
+				<field id="ORG_CODE"		datatype="java.lang.String"	size="4"   description="기관코드" />
+				<field id="TRANS_DATE"		datatype="java.lang.String"	size="8"   description="전송일자" />
+				<field id="TRANS_TIME"		datatype="java.lang.String"	size="6"   description="전송시간" />
+				<field id="TRACE_NUMBER"	datatype="java.lang.String"	size="10"  description="추적번호" />
+				<field id="RESULT_CODE_1"	datatype="java.lang.String"	size="3"   description="응답코드 대분류" />
+				<field id="RESULT_CODE_2"	datatype="java.lang.String"	size="3"   description="응답코드 소분류" />
+				<field id="BODY_LENGTH"		datatype="java.lang.String"	size="4"   value="String.format('%04d', $BODY.size())"   description="전문 길이" />
+				<field id="HEADER_FILER"	datatype="java.lang.String"	size="12"  description="Filler" />
+			</header>
+			<body id="BODY" format="xml">
+				<field id="ID_REQUEST" 		xpath="/BMT/RES/ID_REQUEST" description="" />
+				<field id="DT_BUY"			xpath="/BMT/RES/DT_BUY" description="" />
+				<field id="NM_CONTENTS"		xpath="/BMT/RES/NM_CONTENTS" description="" />
+				<field id="NO_TEL"			xpath="/BMT/RES/NO_TEL" description="" />
+				<field id="SEND_CODE"		xpath="/BMT/RES/SEND_CODE" description="" />
+				<field id="SEND_CODENAME"	xpath="/BMT/RES/SEND_CODENAME" description="" />
+				<field id="VOUCHERNO"		xpath="/BMT/RES/VOUCHERNO" description="" />
+				<field id="VOUCHERSDATE"	xpath="/BMT/RES/VOUCHERSDATE" description="" />
+			</body>
+		</data>
+	</to>
+</conversion>  
+
+	</transform>
+
+</fc>

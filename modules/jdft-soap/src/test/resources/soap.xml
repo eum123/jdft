@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fc>
+	<pool>
+		<maxActive>8</maxActive>
+		<maxIdle>2</maxIdle>
+		<maxWait>5000</maxWait>
+	</pool>
+
+	<reload>
+		<autoReload>true</autoReload>
+	</reload>
+
+	<transform>
+		<conversion id="simple">
+			<from format="soap">
+				<data  type="soappart">
+					<header>
+						<field id="client" name="Content-Type" size="6" />						
+					</header>
+					<body format="xml">
+						<loop id="myLoop"  xpath="/SOAP:home/loop">
+							<field id="age" xpath="/SOAP:home/loop/age" size="2"/>
+						</loop>
+					</body>
+				</data>
+			</from>
+
+			<to format="soap">
+				<data  type="soappart">
+					<header>
+						<field id="client" name="Content-Type" size="6" />			
+					</header>
+					<body format="xml">
+						<create xpath="/SOAP:home" xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/" />
+						<loop id="myLoop" size="$myLoop.size()" xpath="/SOAP:home/loop">
+							<field id="age" xpath="/SOAP:home/loop/age" size="2"/>
+						</loop>
+					</body>
+				</data>
+			</to>
+		</conversion>
+		<!-- 
+		<conversion id="multi">
+			<from format="soap">
+				<data >
+					<header>
+						<field id="mainContentType" name="Content-Type" />
+					</header>
+				</data>
+				<data  type="soappart">
+					<header>
+						<field id="client" name="Client" size="6" />
+					</header>
+					<body>
+						<loop id="myLoop" size="$name" xpath="/SOAP:home/loop">
+							<field id="age" xpath="/SOAP:home/loop/age" size="2"/>
+						</loop>
+					</body>
+				</data>
+				<data  type="soapattach" >
+					<header>
+						<field id="name" size="2" />
+						<field id="length" size="3" />
+					</header>
+					<body>
+						<file id="attach" />
+					</body>
+				</data>
+			</from>
+
+			<to format="soap">
+				<data >
+					<header>
+						<field id="mainContentType" name="Content-Type" />
+					</header>
+				</data>
+				<data  type="soappart">
+					<header>
+						<field id="client" name="Client" size="6" />
+					</header>
+					<body>
+						<loop id="myLoop" size="$name" xpath="/SOAP:home/loop">
+							<field id="age" xpath="/SOAP:home/loop/age" size="2"/>
+						</loop>
+					</body>
+				</data>
+				<data  type="soapattach">
+					<header>
+						<field id="name" size="2" />
+						<field id="length" size="3" />
+					</header>
+					<body>
+						<file id="attach" />
+					</body>
+				</data>
+			</to>
+		</conversion>
+ -->
+		<description></description>
+	</transform>
+
+</fc>

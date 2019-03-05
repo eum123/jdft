@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<fc>
+	<pool>
+		<maxActive>8</maxActive>
+		<maxIdle>-1</maxIdle>
+		<maxWait>5000</maxWait>
+	</pool>
+
+	<reload>
+		<autoReload>true</autoReload>
+	</reload>
+	<transform>
+		<conversion id="bigdecimal">
+			<from format="fixedlength">
+				<data>
+					<header>
+						<field id="TR_CD" size="5" description="TR CODE" />
+
+					</header>
+					<body format="fixedlength">
+
+						<field id="CUST_NAME" size="10" datatype="java.math.BigDecimal"
+							description="고객성명" />
+					</body>
+				</data>
+			</from>
+			<to format="fixedlength">
+				<data>
+					<header>
+						<field id="TR_CD" size="5" />
+
+					</header>
+					<body format="fixedlength" id="ENT_BODY">
+						<field id="CUST_NAME" size="10" description="고객성명" />
+
+					</body>
+				</data>
+			</to>
+			<description>
+			</description>
+		</conversion>
+
+	</transform>
+
+</fc>

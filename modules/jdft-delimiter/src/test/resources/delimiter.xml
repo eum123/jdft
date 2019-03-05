@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fc>
+	<pool>
+		<maxActive>8</maxActive>
+		<maxIdle>2</maxIdle>
+		<maxWait>5000</maxWait>
+	</pool>
+
+	<reload>
+		<autoReload>true</autoReload>
+	</reload>
+
+	<transform>
+		<conversion id="test_1">
+			<from format="delimiter" delimiter="__&amp;&amp;&amp;__">
+				<data  id="a">
+					<header>
+						<field id="name" size="10" />
+					</header>
+					<body>
+						<field id="age" size="5"/>
+					</body>
+				</data>
+			</from>
+
+			<to format="delimiter" delimiter="__&amp;&amp;&amp;__">
+				<data >
+					<header>
+						<field id="name" size="10" />
+					</header>
+					<body >
+						<field id="age" size="5" />
+					</body>
+				</data>
+			</to>
+		</conversion>
+
+		<description></description>
+	</transform>
+
+</fc>

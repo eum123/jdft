@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<entities>
+  <field id="HDR_LENGTH"    			size="4"	description="전체길이"/>
+</entities>
+
+  
+  
+
+

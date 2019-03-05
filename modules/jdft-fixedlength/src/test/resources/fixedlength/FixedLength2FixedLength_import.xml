@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fc>
+	<pool>
+		<maxActive>8</maxActive>
+		<maxIdle>-1</maxIdle>
+		<maxWait>5000</maxWait>
+	</pool>
+
+	<reload>
+		<autoReload>true</autoReload>
+	</reload>
+
+	<transform>
+		<conversion id="test_1">
+			<from format="fixedlength">
+				<data  id="a">
+					<header>
+						<import id="temp" resource="src/test/resources/fixedlength/add.xml" />
+					</header>
+					<body>
+						<field id="age" size="5"/>
+					</body>
+				</data>
+			</from>
+
+			<to format="fixedlength">
+				<data >
+					<header>
+						<import id="temp" resource="src/test/resources/fixedlength/add.xml" />
+					</header>
+					<body format="fixedlength">
+						<field id="age" size="5" padding=" "/>
+					</body>
+				</data>
+			</to>
+		</conversion>
+		<description></description>
+	</transform>
+
+</fc>

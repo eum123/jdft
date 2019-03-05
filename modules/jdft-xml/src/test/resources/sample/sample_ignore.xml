@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+
+<fc>
+	<pool>
+		<maxActive>8</maxActive>
+		<maxIdle>2</maxIdle>
+		<maxWait>5000</maxWait>
+	</pool>
+
+	<reload>
+		<autoReload>true</autoReload>
+	</reload>
+
+	<transform>
+
+<conversion id="SAMPLE_02">
+	<description>SAMPLES</description>
+	<from format="xml">
+		<data>
+			<header>
+				<field id="TRX_CODE"	  	xpath="/BMT/HEADER/TRX_CODE" description="" />
+				<field id="ORG_CODE"		xpath="/BMT/HEADER/ORG_CODE" description="" />
+				<field id="TRANS_DATE"		xpath="/BMT/HEADER/TRANS_DATE" description="" />
+				<field id="TRANS_TIME"		xpath="/BMT/HEADER/TRANS_TIME" description="" />
+				<field id="TRACE_NUMBER"	xpath="/BMT/HEADER/TRACE_NUMBER" description="" />
+				<field id="RES_CODE"		xpath="/BMT/HEADER/RES_CODE" description="" />
+				<field id="RES_MESSAGE"		xpath="/BMT/HEADER/RES_MESSAGE" description="" />
+			</header>
+			<body id="BODY" format="xml">
+				<field id="ID_REQUEST" 		xpath="/BMT/RES/ID_REQUEST" description="" />
+				<field id="DT_BUY"			xpath="/BMT/RES/DT_BUY" description="" />
+				<field id="NM_CONTENTS"		xpath="/BMT/RES/NM_CONTENTS" description="" />
+				<field id="NO_TEL"			xpath="/BMT/RES/NO_TEL" description="" />
+				<field id="SEND_CODE"		xpath="/BMT/RES/SEND_CODE" description="" />
+				<field id="SEND_CODENAME"	xpath="/BMT/RES/SEND_CODENAME" description="" />
+				<field id="VOUCHERNO"		xpath="/BMT/RES/VOUCHERNO" description="" />
+				<field id="VOUCHERSDATE"	xpath="/BMT/RES/VOUCHERSDATE" description="" />
+			</body>
+		</data>
+	</from>
+	<to format="xml" indent="true">
+		<data>
+			<header>
+				<field id="TRX_CODE"	  	xpath="/BMT/HEADER/TRX_CODE" description="" />
+				<field id="ORG_CODE"		xpath="/BMT/HEADER/ORG_CODE" description="" />
+				<field id="TRANS_DATE"		xpath="/BMT/HEADER/TRANS_DATE" description="" />
+				<field id="TRANS_TIME"		xpath="/BMT/HEADER/TRANS_TIME" description="" />
+				<field id="TRACE_NUMBER"	xpath="/BMT/HEADER/TRACE_NUMBER" description="" />
+				<field id="RES_CODE"		xpath="/BMT/HEADER/RES_CODE" description="" />
+				<field id="RES_MESSAGE"		xpath="/BMT/HEADER/RES_MESSAGE" description="" />
+			</header>
+			<body id="BODY" format="xml">
+				<field id="ID_REQUEST" 		xpath="/BMT/RES/ID_REQUEST" description="" />
+				<field id="DT_BUY"			xpath="/BMT/RES/DT_BUY" description="" />
+				<field id="NM_CONTENTS"		xpath="/BMT/RES/NM_CONTENTS" description="" />
+				<field id="NO_TEL"			xpath="/BMT/RES/NO_TEL" description="" />
+				<field id="SEND_CODE"		xpath="/BMT/RES/SEND_CODE" description="" />
+				<field id="SEND_CODENAME"	xpath="/BMT/RES/SEND_CODENAME" ignore="true" description="" />
+				<field id="VOUCHERNO"		xpath="/BMT/RES/VOUCHERNO" description="" />
+				<field id="VOUCHERSDATE"	xpath="/BMT/RES/VOUCHERSDATE" description="" />
+			</body>
+		</data>
+	</to>
+</conversion>  
+
+	</transform>
+
+</fc>

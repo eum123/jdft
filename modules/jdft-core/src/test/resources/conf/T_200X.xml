@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<conversion id="^200[0-9]" regex="true">
+  <from format="fixedlength">
+    <data>
+      <header>
+        
+        <field id="HDR_DEAL_CODE"  		size="4"	description="거래구분코드"/>
+        <field id="HDR_TRANS_CODE"  		size="1"	description="송수신코드"/>
+        
+      </header>
+      <body format="fixedlength">
+	     <field id="BDY_BANK"    			size="2"	description="취급은행"/>
+	     <field id="BDY_BANK_BRANCH"    	size="4"	description="취급은행지점"/>
+      </body>
+    </data>
+  </from>
+
+  <to format="fixedlength">
+    <data>
+      <header>
+        <field id="HDR_DEAL_CODE"  		size="4"	description="거래구분코드"/>
+        <field id="HDR_TRANS_CODE"  		size="1"	description="송수신코드"/>
+        
+      </header>
+      <body format="fixedlength">
+	     <field id="BDY_BANK"    			size="2"	description="취급은행"/>
+	     <field id="BDY_BANK_BRANCH"    	size="4"	description="취급은행지점"/>
+      </body>
+    </data>
+  </to>
+  <description>2000 : 은행에서 발생되는 수취 조회, 2001 : 기관에서 발생되는 입금 가능 조회 (계좌번호 예금주명 확인)</description>
+</conversion>  
+
+
