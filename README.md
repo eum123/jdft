@@ -2,12 +2,12 @@
 
 xml 설정을 이용하여 data format을 변환하는 기능
 
-자세한 내용은 [document/jdft_user_guide.xml](./document/jdft_user_guide.xml) 참고
+자세한 내용은 [document/jdft_user_guide.pptx](https://github.com/eum123/jdft/tree/master/document/jdft_user_guide.pptx) 참고
 
 
 설정 
 ========
-####공통설정
+#### 공통설정
 ```xml
 <pre>
   <fc>
@@ -24,7 +24,7 @@ xml 설정을 이용하여 data format을 변환하는 기능
   </fc>
 ```
 
-####전문 변환 설정
+#### 전문 변환 설정
 ```xml
 
   <conversion id="reqSampleTrans">
