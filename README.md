@@ -7,7 +7,7 @@ xml 설정을 이용하여 data format을 변환하는 기능
 
 설정 
 ========
-공통설정
+'''공통설정
 <pre>
   <fc>
     <pool>
@@ -22,10 +22,10 @@ xml 설정을 이용하여 data format을 변환하는 기능
   </transform>
   </fc>
 
-</pre>
+'''
  
-전문 변환 설정
-<pre>
+'''전문 변환 설정
+
   <conversion id="reqSampleTrans">
   <from format="fixedlength">
     <data>
@@ -52,7 +52,7 @@ xml 설정을 이용하여 data format을 변환하는 기능
   </conversion>
 
 </pre>
-
+'''
  
 Dependency
 =============
