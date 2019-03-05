@@ -2,12 +2,13 @@
 
 xml 설정을 이용하여 data format을 변환하는 기능
 
-자세한 내용은 document/jdft_user_guide.xml 참고
+자세한 내용은 [document/jdft_user_guide.xml](./document/jdft_user_guide.xml) 참고
 
 
 설정 
 ========
-'''공통설정
+####공통설정
+```xml
 <pre>
   <fc>
     <pool>
@@ -21,10 +22,10 @@ xml 설정을 이용하여 data format을 변환하는 기능
     <import    resource="../conf/converter/VC_SETTLE_1XXX_REQ.xml" />
   </transform>
   </fc>
+```
 
-'''
- 
-'''전문 변환 설정
+####전문 변환 설정
+```xml
 
   <conversion id="reqSampleTrans">
   <from format="fixedlength">
@@ -52,11 +53,11 @@ xml 설정을 이용하여 data format을 변환하는 기능
   </conversion>
 
 </pre>
-'''
+```
  
 Dependency
 =============
- <pre>
+```xml
   <dependency>
     <groupId>org.slf4j</groupId>
     <artifactId>slf4j-api</artifactId>
@@ -97,7 +98,7 @@ Dependency
     <scope>compile</scope>
 </dependency>
 
- </pre>
+```
  
 
 
